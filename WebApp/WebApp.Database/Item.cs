@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebApp.Database
 {
-    internal class Item
+    public class Item
     {
         public int Id { get; set; }
         public Guid Guid{  get; set; }

@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace WebApp.Domain.Role
 {
-    internal class Class1
+    public class Roles
     {
+        public Roles() { }
+        public enum RoleType
+        {
+            User=1,
+            Admin=2,
+            Owner=3
+        }
     }
+
+   
 }

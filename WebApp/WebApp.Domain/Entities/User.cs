@@ -3,10 +3,8 @@ using WebApp.Domain.Role;
 
 namespace WebApp.Domain.Entities
 {
-    public class User
+    public class User : Base
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public DateTime CreatedDate { get; set; } = DateTime.Now;
@@ -19,5 +17,6 @@ namespace WebApp.Domain.Entities
             Password = password;
             Role = role;
         }
+        public User() { }
     }
 }

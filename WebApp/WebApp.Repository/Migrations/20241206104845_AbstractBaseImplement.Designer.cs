@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApp.Repository;
 
@@ -11,9 +12,11 @@ using WebApp.Repository;
 namespace WebApp.Repository.Migrations
 {
     [DbContext(typeof(DBcontextClass))]
-    partial class DBcontextClassModelSnapshot : ModelSnapshot
+    [Migration("20241206104845_AbstractBaseImplement")]
+    partial class AbstractBaseImplement
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,26 +78,6 @@ namespace WebApp.Repository.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedDate = new DateTime(2024, 12, 6, 10, 49, 15, 942, DateTimeKind.Utc).AddTicks(495),
-                            Email = "test@gadshgdsagd.com",
-                            Name = "test",
-                            Password = "test",
-                            Role = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CreatedDate = new DateTime(2024, 12, 6, 10, 49, 15, 942, DateTimeKind.Utc).AddTicks(518),
-                            Email = "test@gadshgdsagd.com",
-                            Name = "test",
-                            Password = "test",
-                            Role = 2
-                        });
                 });
 #pragma warning restore 612, 618
         }

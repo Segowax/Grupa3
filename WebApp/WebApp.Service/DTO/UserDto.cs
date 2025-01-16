@@ -1,9 +1,10 @@
 ﻿using WebApp.Domain.Enum;
 
-namespace WebApp.Domain.Entities
+namespace WebApp.Service.DTO
 {
-    public class User : Base
+    public class UserDto
     {
+        public required string Name { get; set; }
         public required string Email { get; set; }
         public required string Password { get; set; }
         public DateTime CreatedDate { get; set; } = DateTime.Now;

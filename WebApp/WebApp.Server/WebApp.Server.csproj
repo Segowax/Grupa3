@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WebApp.Repository\WebApp.Repository.csproj" />
+    <ProjectReference Include="..\WebApp.Service\WebApp.Service.csproj" />
   </ItemGroup>
 
 </Project>

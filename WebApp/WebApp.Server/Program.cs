@@ -1,4 +1,5 @@
 using WebApp.Repository.IoC;
+using WebApp.Service.IoC;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddRepositoryServices(builder.Configuration);
+builder.Services.AddServiceServices();
 
 var app = builder.Build();
 

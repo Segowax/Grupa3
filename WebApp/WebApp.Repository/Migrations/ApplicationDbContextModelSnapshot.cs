@@ -3,7 +3,6 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApp.Repository;
 
@@ -11,12 +10,10 @@ using WebApp.Repository;
 
 namespace WebApp.Repository.Migrations
 {
-    [DbContext(typeof(DBcontextClass))]
-    [Migration("20241206104845_AbstractBaseImplement")]
-    partial class AbstractBaseImplement
+    [DbContext(typeof(ApplicationDbContext))]
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,6 +32,9 @@ namespace WebApp.Repository.Migrations
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("Guid")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -64,6 +64,9 @@ namespace WebApp.Repository.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid>("Guid")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -72,12 +75,35 @@ namespace WebApp.Repository.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Role")
-                        .HasColumnType("int");
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedDate = new DateTime(2025, 1, 16, 16, 41, 17, 256, DateTimeKind.Utc).AddTicks(6866),
+                            Email = "test@gadshgdsagd.com",
+                            Guid = new Guid("3652ba2e-cdf6-470f-a1fe-4163ff6f59c4"),
+                            Name = "User",
+                            Password = "User",
+                            Role = "User"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedDate = new DateTime(2025, 1, 16, 16, 41, 17, 256, DateTimeKind.Utc).AddTicks(6866),
+                            Email = "admin@gadshgdsagd.com",
+                            Guid = new Guid("2b0cc3d5-246c-4993-9cd0-cada8c2324f6"),
+                            Name = "Admin",
+                            Password = "Admin",
+                            Role = "Admin"
+                        });
                 });
 #pragma warning restore 612, 618
         }

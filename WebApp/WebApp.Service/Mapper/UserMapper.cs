@@ -14,5 +14,15 @@ namespace WebApp.Service.Mapper
                 Password = userDto.Password,
                 Role = userDto.Role,
             };
+
+        internal static UserDto MapToEntity(this User user) =>
+            new()
+            {
+                CreatedDate = user.CreatedDate,
+                Email = user.Email,
+                Name = user.Name,
+                Password = user.Password,
+                Role = user.Role,
+            };
     }
 }

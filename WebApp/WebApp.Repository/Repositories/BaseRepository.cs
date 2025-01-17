@@ -23,9 +23,10 @@ namespace WebApp.Repository.Repositories
             await _applicationDbContext.SaveChangesAsync();
         }
 
-        public Task<T> Get(T entity)
+        public async Task<T?> Get(int id)
         {
-            throw new NotImplementedException();
+            var entity = await _applicationDbContext.FindAsync<T>(id);
+            return entity;   
         }
 
         public Task<T> GetAll()

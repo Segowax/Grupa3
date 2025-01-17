@@ -1,4 +1,5 @@
-﻿using WebApp.Repository.Repositories.Interfaces;
+﻿using WebApp.Domain.Exceptions;
+using WebApp.Repository.Repositories.Interfaces;
 using WebApp.Service.DTO;
 using WebApp.Service.Mapper;
 
@@ -17,6 +18,12 @@ namespace WebApp.Service
         {
             var user = userDto.MapToUser();
             await _userRepository.Add(user);
+        }
+
+        public async Task<UserDto> GetUser(int id)
+        {
+           var user =  await _userRepository.Get(id);     
+           return user?.MapToEntity() ?? throw new NotFoundException("");
         }
     }
 }

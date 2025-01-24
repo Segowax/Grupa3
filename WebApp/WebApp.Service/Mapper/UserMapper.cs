@@ -2,7 +2,7 @@
 using WebApp.Service.DTO;
 
 namespace WebApp.Service.Mapper
-{
+{/*
     internal static class UserMapper
     {
         internal static User MapToUser(this UserDto userDto) =>
@@ -25,4 +25,6 @@ namespace WebApp.Service.Mapper
                 Role = user.Role,
             };
     }
+}
+    */
 }

@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WebApp.Domain.Entities;
-using WebApp.Repository.DataSeeding;
-
 namespace WebApp.Repository
 {
     public class ApplicationDbContext : DbContext
@@ -22,8 +20,6 @@ namespace WebApp.Repository
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>().Seed();
-
             base.OnModelCreating(modelBuilder);
         }
     }

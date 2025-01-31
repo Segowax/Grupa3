@@ -8,9 +8,8 @@ namespace WebApp.Domain.Entities
         public required string FirstName { get; set; }
         public required string LastName { get; set; }
         public required string PhoneNumber { get; set; }
-        public required string Adress { get; set; }
+        public string? Adress { get; set; }
         public required string Password { get; set; }
-        
         public string Role { get; set; } = RoleType.User.ToString();
     }
 }

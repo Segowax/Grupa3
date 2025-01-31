@@ -2,7 +2,7 @@
 
 namespace WebApp.Repository.Repositories.Interfaces
 {
-    public interface IUserRepository : IBaseRepository<User>
+    public interface IRezerwacjeRepository : IBaseRepository<Rezerwacje>
     {
     }
 }

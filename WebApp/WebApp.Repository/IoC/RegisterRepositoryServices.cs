@@ -16,7 +16,10 @@ namespace WebApp.Repository.IoC
                 options.UseSqlServer(configuration.GetConnectionString("ConnString"));
             });
 
-            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ILokaleRepository, LokaleRepository>();
+            services.AddScoped<IDaniaRepository,DaniaRepository>();
+            services.AddScoped<IPracownicyRepository,PracownicyRepository>();
+            services.AddScoped<IRezerwacjeRepository,RezerwacjeRepository>();
 
             return services;
         }

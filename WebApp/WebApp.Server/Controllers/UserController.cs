@@ -38,9 +38,6 @@ namespace WebApp.Server.Controllers
                 var user = await _userService.GetUser(id);
                 return Ok(user);
             }
-            catch (NotFoundException) {
-                return NotFound();
-            }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);

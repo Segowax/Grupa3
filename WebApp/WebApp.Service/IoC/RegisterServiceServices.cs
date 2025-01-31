@@ -7,7 +7,7 @@ namespace WebApp.Service.IoC
     {
         public static IServiceCollection AddServiceServices(this IServiceCollection services)
         {
-            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ILokaleService, LokaleService>();
 
             return services;
         }

@@ -3,9 +3,9 @@ using WebApp.Repository.Repositories.Interfaces;
 
 namespace WebApp.Repository.Repositories
 {
-    public class UserRepository : BaseRepository<User>, IUserRepository
+    public class DaniaRepository : BaseRepository<Dania>, IDaniaRepository
     {
-        public UserRepository(ApplicationDbContext applicationDbContext)
+        public DaniaRepository(ApplicationDbContext applicationDbContext)
             : base(applicationDbContext) { }
     }
 }

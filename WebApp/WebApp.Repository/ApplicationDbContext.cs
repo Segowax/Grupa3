@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WebApp.Domain.Entities;
-using WebApp.Repository.DataSeeding;
 
 namespace WebApp.Repository
 {
@@ -9,14 +8,14 @@ namespace WebApp.Repository
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options) { }
 
-        DbSet<User> Users { get; set; }
+        DbSet<Lokale> Lokale { get; set; }
+        DbSet<Dania> Dania { get; set; }
+        DbSet<Pracownicy> Pracownicy{ get; set; }
+        DbSet<Rezerwacje> Rezerwacje { get; set; }
 
-        DbSet<Schedule> Schedules { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>().Seed();
-
             base.OnModelCreating(modelBuilder);
         }
     }

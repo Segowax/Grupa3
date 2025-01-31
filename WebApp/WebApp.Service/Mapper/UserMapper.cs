@@ -5,24 +5,22 @@ namespace WebApp.Service.Mapper
 {
     internal static class UserMapper
     {
-        internal static User MapToUser(this UserDto userDto) =>
+        internal static Lokale MapToLokal(this LokalDTO lokalDTO) =>
             new()
             {
-                CreatedDate = userDto.CreatedDate,
-                Email = userDto.Email,
-                Name = userDto.Name,
-                Password = userDto.Password,
-                Role = userDto.Role,
+                Nazwa = lokalDTO.Nazwa,
+                Miasto = lokalDTO.Miasto,
+                Ulica = lokalDTO.Ulica,
+                Numer = lokalDTO.Numer
             };
 
-        internal static UserDto MapToEntity(this User user) =>
+        internal static LokalDTO MapToEntity(this Lokale lokal) =>
             new()
             {
-                CreatedDate = user.CreatedDate,
-                Email = user.Email,
-                Name = user.Name,
-                Password = user.Password,
-                Role = user.Role,
+                Nazwa = lokal.Nazwa,
+                Miasto = lokal.Miasto,
+                Ulica = lokal.Ulica,
+                Numer = lokal.Numer
             };
     }
 }

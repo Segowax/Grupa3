@@ -1,0 +1,84 @@
+﻿@page "/sensory"
+@inject HttpClient sensory
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Response</title>
+    <link rel="stylesheet" href="~/css/" />
+
+    <style>
+        table, tr, td
+        {
+            border: solid 2px black;
+        }
+
+        td
+        {
+            padding: 10px;
+        }
+        #first
+        {
+            background: dimgray;
+        }
+    </style>
+</head>
+<body>
+    <h2>API Response</h2>
+
+    <div>
+        <strong>Response from API:</strong>
+        <table>
+            <tr id="first">
+                <td>Sensor ID</td>
+                <td>Sensor name</td>
+                <td>Enqueued time</td>
+                <td>Value</td>
+            </tr>
+            @foreach (var test in Test)
+            {
+                <tr>
+                    <td>@test.sensorId</td>
+                    <td>@test.name</td>
+                    <td>@test.enqueuedTime</td>
+                    <td>@test.value</td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>
+
+@code {
+    private IEnumerable<RequestObj>? Test = new List<RequestObj>();
+
+    public class RequestObj
+    {
+        public string sensorId { get; set; } = "notset";
+        public string name { get; set; } = "notset";
+        public string enqueuedTime { get; set; } = "notset";
+        public object value { get; set; } = 0;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var response = await testtest.GetStringAsync("https://my-wonderful-api-acgvdvaaa5d4b9ez.northeurope-01.azurewebsites.net/api/Sensor/GetAll");
+
+            if (!string.IsNullOrEmpty(response))
+            {
+                Test = System.Text.Json.JsonSerializer.Deserialize<List<RequestObj>>(response);
+            }
+            else
+            {
+                Test = new List<RequestObj>(); 
+            }
+        }
+        catch (Exception ex)
+        {
+            Test = new List<RequestObj>();
+            Console.WriteLine(ex);
+        }
+    }
+}

@@ -16,8 +16,7 @@ builder.Services.AddScoped(sp => new HttpClient
 builder.Services.AddHttpClient(httpClientName, client =>
 {
     client.BaseAddress = new Uri("https://my-wonderful-api-acgvdvaaa5d4b9ez.northeurope-01.azurewebsites.net");
-    client.DefaultRequestHeaders.UserAgent.ParseAdd("dotnet-docs");
-
+//    client.DefaultRequestHeaders.UserAgent.ParseAdd("dotnet-docs");
 });
 
 await builder.Build().RunAsync();

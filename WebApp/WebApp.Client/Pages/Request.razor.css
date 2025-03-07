@@ -1,0 +1,11 @@
+﻿table, tr, td {
+    border: solid 2px black;
+}
+
+td {
+    padding: 10px;
+}
+
+table:first-child {
+    background-color: gray;
+}

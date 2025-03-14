@@ -1,8 +1,16 @@
 ﻿@page "/"
 
-@inject HttpClient Http
+@inject IHttpClientFactory HttpFactory
+@inject IJSRuntime JSRuntime
 
-<h3>Fetched Sensor Data</h3>
+<head>
+
+
+
+</head>
+<h3 >Fetched Sensor Data</h3>
+<h2 >@errorMessage</h2>
+<button @onclick="ShowAlert">Click Me to Show Alert</button>
 
 @if (data == null)
 {
@@ -10,9 +18,12 @@
 }
 else
 {
-    <table class="table">
+    <div class="w-full h-full">
+        <canvas id="booleanChart"></canvas>
+    </div>
+    <table class="table border-2 border-solid border-black">
         <thead>
-            <tr>
+            <tr >
                 <th>Name</th>
                 <th>Sensor ID</th>
                 <th>Enqueued Time</th>
@@ -34,18 +45,40 @@ else
 }
 
 @code {
-    private List<SensorData> data;
-
+    private List<SensorData>? data;
+    private string errorMessage = "";
     protected override async Task OnInitializedAsync()
     {
-        data = await Http.GetFromJsonAsync<List<SensorData>>("api/Sensor/GetAll");
+        try {
+            var httpClient = HttpFactory.CreateClient("WonderfulApi");
+            data = await httpClient.GetFromJsonAsync<List<SensorData>>("api/Sensor/GetAll");
+            if (data == null) return; 
+            var left = 0;
+            var rigth = data.Count - 1;
+            while (left < rigth)
+            {
+                var temp = data[rigth];
+                data[rigth] = data[left];
+                data[left] = temp;
+
+                left++;
+                rigth--;
+
+            }
+
+        } catch (HttpRequestException ex) {
+            errorMessage = ex.Message;
+        }   
+
     }
 
     public class SensorData
     {
-        public string Name { get; set; }
-        public string sensorid { get; set; }
+        public string? Name { get; set; }
+        public string? sensorid { get; set; }
         public DateTime enqueuedTime { get; set; }
-        public object value { get; set; }
+        public object? value { get; set; }
     }
+    private async Task ShowAlert() => await JSRuntime.InvokeVoidAsync("dataChart", data);
+
 }

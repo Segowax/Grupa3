@@ -1,0 +1,2 @@
+Odbywałem praktyki w firmie Vitalisnatur, głównie pracowałem na technologii PrestaShop 1.6.1.24. Według mnie trochę przestarzałe i ogólnie ciężko było orientować się i zarządzać samym projektem bo pliki były nazwane i umieszczone bardzo chaotycznie (nie licząc plików cache projekt zajmował 10GB z czego 120 tysięcy plików i 10 tysięcy folderów).
+Z głównych tasków miałem poprawić SEO strony, ale skończyło się na próbie poprawienia wyglądu strony. Robiłem to 4 tygodnie, ale nie do końca się udało przez przyczyny w pierwszym akapicie
